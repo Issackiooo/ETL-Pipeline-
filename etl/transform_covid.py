@@ -4,9 +4,9 @@ BUCKET = "covid-etl-issackiooo"
 RAW_DATA_PATH = f"s3://{BUCKET}/raw/"
 PROCESSED_PATH = f"s3://{BUCKET}/processed/"
 
-CSV_File = "covid19_patient_symptoms.csv"
+CSV_File = "covid19_patient_symptoms_diagnosis.csv"
 
-dfr = pd.read_csv(RAW_DATA_PATH + CSV_File) 
+df = pd.read_csv(RAW_DATA_PATH + CSV_File) 
 
 
 print("Initial shape:", df.shape)
