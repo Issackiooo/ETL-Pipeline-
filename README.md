@@ -41,3 +41,36 @@ CREATE EXTERNAL TABLE covid_symptoms (
 )
 STORED AS PARQUET
 LOCATION 's3://covid-etl-issackiooo/processed/';
+
+## Additional Athena Queries
+
+## Total number of records
+SELECT COUNT(*) FROM covid_symptoms;
+
+## Diagnosis distribution
+SELECT covid_result, COUNT(*) 
+FROM covid_symptoms
+GROUP BY covid_result;
+
+## Fever vs COVID result
+SELECT fever, covid_result, COUNT(*) 
+FROM covid_symptoms
+GROUP BY fever, covid_result;
+
+## Gender vs COVID result
+SELECT gender, covid_result, COUNT(*) 
+FROM covid_symptoms
+GROUP BY gender, covid_result;
+
+## Percentage of patients with fever by COVID result
+SELECT covid_result,
+       AVG(fever) AS pct_with_fever
+FROM covid_symptoms
+GROUP BY covid_result;
+
+## Average oxygen level by COVID result
+SELECT covid_result,
+       AVG(oxygen_level) AS avg_oxygen_level
+FROM covid_symptoms
+GROUP BY covid_result;
+
